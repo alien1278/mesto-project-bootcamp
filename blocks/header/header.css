@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 45px 200px 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  box-sizing: border-box;
+}
+@media screen and (max-width: 980px) {
+  .header {
+    margin: 28px 100px 0;
+  }
+}
+@media screen and (max-width: 780px) {
+  .header {
+    width: 100%;
+    margin: 28px 0 0;
+  }
+}

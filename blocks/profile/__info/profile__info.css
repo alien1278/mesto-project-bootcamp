@@ -1,0 +1,17 @@
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "name edit"
+    "description description";
+  column-gap: 18px;
+  row-gap: 16px;
+  align-items: center;
+  align-content: center;
+  /* vertical-align: baseline; */
+}
+@media screen and (max-width: 730px) {
+  .profile__info {
+    column-gap: 10px;
+    row-gap: 14px;
+  }
+}

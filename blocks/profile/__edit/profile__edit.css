@@ -1,0 +1,21 @@
+.profile__edit {
+  grid-area: edit;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 2px solid #000;
+  background-image: url(../../../images/icon/buttonEdit.svg);
+  background-repeat: no-repeat;
+  /* background-size: 24px 24px; */
+  background-color: black;
+  align-self: baseline;
+  padding: 0;
+}
+
+@media screen and (max-width: 730px) {
+  .profile__edit {
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+  }
+}

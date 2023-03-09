@@ -1,0 +1,12 @@
+.card {
+  display: grid;
+  grid-template-areas:
+    "image image"
+    "title like";
+  row-gap: 25px;
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  max-width: 282px;
+}
