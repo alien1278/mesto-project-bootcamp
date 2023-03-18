@@ -2,12 +2,14 @@ let popup = document.querySelector(".popup");
 let popupOpen = document.querySelector(".profile__edit");
 let popupClose = document.querySelector(".popup__close");
 
-function popupOpen() {
+function open() {
   popup.classList.add("popup_opened");
 }
-function popupClose() {
+function close() {
   popup.classList.remove("popup_opened");
 }
 
-popupOpen.addEventListener("click", popupOpen);
-popupClose.addEventListener("click", popupClose);
+popupOpen.addEventListener("click", open);
+popupClose.addEventListener("click", close);
+
+// function editProfile(name, description) {}
