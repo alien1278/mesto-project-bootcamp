@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
     "name edit"
-    "description description";
+    "description _none_";
   column-gap: 18px;
   row-gap: 16px;
   align-items: center;
