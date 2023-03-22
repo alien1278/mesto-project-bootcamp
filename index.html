@@ -30,6 +30,8 @@
                     </div>
                 </div>
                 <button type="button" class="button profile__add-card" aria-label="Добавить карточку"></button>
+                <!-- <button type="button" class="button open-popup profile__add-card" aria-label="Добавить карточку"
+                   data-popup-class="popup-edit"></button> -->
             </section>
 
             <section class="cards"></section>
@@ -42,12 +44,13 @@
 
 
     </div>
+
     <!-- block popup -->
-    <div class="popup ">
+    <div class="popup popup_edit">
         <div class="popup__container">
-            <button type="button" class="button popup__close" aria-label="Закрыть окно"></button>
+            <button type="button" class="button popup__close popup__close_edit" aria-label="Закрыть окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="form popup__form" name="profile-edit" novalidate>
+            <form class="form popup__form popup__form_edit" name="profile-edit" novalidate>
                 <label for="username-input" class="popup__label">
                     <input id="username-input" type="text" class="popup__input" name="username"
                         placeholder="Введите имя" value="Жак-Ив Кусто">
@@ -58,7 +61,8 @@
                         placeholder="Введите описание" value="Исследователь океана">
                     <span class="description-input-error popup__input-error"></span>
                 </label>
-                <button type="submit" class="button popup__submit" aria-label="Сохранить">Сохранить</button>
+                <button type="submit" class="button popup__submit popup__submit_edit"
+                    aria-label="Сохранить">Сохранить</button>
             </form>
         </div>
     </div>
@@ -70,7 +74,27 @@
             <button type="button" class="button button__like card__like" aria-label="в избранное"></button>
         </article>
     </template>
-
+    <!-- block popup add card-->
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <button type="button" class="button popup__close popup__close_add" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="form popup__form popup__form_add" name="add-card-form" novalidate>
+                <label for="name-card-input" class="popup__label">
+                    <input id="name-card-input" type="text" class="popup__input" name="name-card" placeholder="Название"
+                        value="">
+                    <span class="name-card-input-error popup__input-error"></span>
+                </label>
+                <label for="url-card-input" class="popup__label">
+                    <input id="url-card-input" type="text" class="popup__input" name="url"
+                        placeholder="Ссылка на картинку" value="">
+                    <span class="url-input-error popup__input-error"></span>
+                </label>
+                <button type="submit" class="button popup__submit popup__submit_add"
+                    aria-label="Создать">Создать</button>
+            </form>
+        </div>
+    </div>
 
 
 
