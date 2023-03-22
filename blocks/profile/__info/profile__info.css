@@ -2,7 +2,8 @@
   display: grid;
   grid-template-areas:
     "name edit"
-    "description _none_";
+    "description description";
+  grid-template-columns: 1fr 24px;
   column-gap: 18px;
   row-gap: 16px;
   align-items: center;
@@ -12,6 +13,6 @@
 @media screen and (max-width: 730px) {
   .profile__info {
     column-gap: 10px;
-    row-gap: 14px;
+    row-gap: 8px;
   }
 }

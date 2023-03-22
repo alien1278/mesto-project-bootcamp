@@ -45,20 +45,20 @@
 
     </div>
 
-    <!-- block popup -->
+    <!-- block popup edit-->
     <div class="popup popup_edit">
         <div class="popup__container">
             <button type="button" class="button popup__close popup__close_edit" aria-label="Закрыть окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="form popup__form popup__form_edit" name="profile-edit" novalidate>
+            <form class="form popup__form popup__form_edit" name="profile-edit">
                 <label for="username-input" class="popup__label">
                     <input id="username-input" type="text" class="popup__input" name="username"
-                        placeholder="Введите имя" value="Жак-Ив Кусто">
+                        placeholder="Введите имя" value="Жак-Ив Кусто" required>
                     <span class="username-input-error popup__input-error"></span>
                 </label>
                 <label for="description-input" class="popup__label">
                     <input id="description-input" type="text" class="popup__input" name="description"
-                        placeholder="Введите описание" value="Исследователь океана">
+                        placeholder="Введите описание" value="Исследователь океана" required>
                     <span class="description-input-error popup__input-error"></span>
                 </label>
                 <button type="submit" class="button popup__submit popup__submit_edit"
@@ -66,12 +66,15 @@
             </form>
         </div>
     </div>
-    <!-- block addCard -->
+    <!-- block template card -->
     <template id="cardItem">
         <article class="card">
             <h2 class="card__title"></h2>
-            <img class="card__image" src="" alt="изображение не загрузилось :(">
-            <button type="button" class="button button__like card__like" aria-label="в избранное"></button>
+
+            <img class="card__image" src="" onerror="this.src='./images/defaultPhoto.png'">
+
+            <button type="button" class="button card__delete" aria-label="удалить"></button>
+            <button type="button" class="button card__like" aria-label="в избранное"></button>
         </article>
     </template>
     <!-- block popup add card-->
@@ -79,15 +82,15 @@
         <div class="popup__container">
             <button type="button" class="button popup__close popup__close_add" aria-label="Закрыть окно"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="form popup__form popup__form_add" name="add-card-form" novalidate>
+            <form class="form popup__form popup__form_add" name="add-card-form">
                 <label for="name-card-input" class="popup__label">
                     <input id="name-card-input" type="text" class="popup__input" name="name-card" placeholder="Название"
-                        value="">
+                        value="" required>
                     <span class="name-card-input-error popup__input-error"></span>
                 </label>
                 <label for="url-card-input" class="popup__label">
-                    <input id="url-card-input" type="text" class="popup__input" name="url"
-                        placeholder="Ссылка на картинку" value="">
+                    <input id="url-card-input" type="url" class="popup__input" name="url"
+                        placeholder="Ссылка на картинку" value="" required>
                     <span class="url-input-error popup__input-error"></span>
                 </label>
                 <button type="submit" class="button popup__submit popup__submit_add"
@@ -95,9 +98,14 @@
             </form>
         </div>
     </div>
-
-
-
+    <!-- block popup open photo-->
+    <div class="popup popup_photo">
+        <figure class="popup__figure">
+            <button type="button" class="button popup__close popup__close_photo" aria-label="Закрыть окно"></button>
+            <img class="popup__image " src="" onerror="this.src='./images/defaultPhoto.png'">
+            <h2 class="popup__name "></h2>
+        </figure>
+    </div>
     <script src="./pages/index.js"></script>
 </body>
 
