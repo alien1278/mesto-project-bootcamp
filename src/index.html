@@ -18,11 +18,14 @@
 
             <section class="profile">
                 <div class="profile__content">
-                    <img src="<%=require('./images/profileAva.jpg')%>" class="profile__avatar" alt="Аватарка">
+                    <div class="profile__avatar-container">
+                        <img src="" class="profile__avatar" alt="Аватарка">
+                        <button type="button" class="profile__avatar-edit"></button>
+                    </div>
+                    <!-- <%=require('./images/profileAva.jpg')%> -->
                     <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто </h1>
-                        <p class="profile__description">Исследователь океана Исследователь океана Исследователь океана
-                            Исследователь океана Исследователь океана
+                        <h1 class="profile__name"> </h1>
+                        <p class="profile__description">
                         </p>
                         <button type="button" class="button profile__edit"
                             aria-label="Редактировать информацию"></button>
@@ -71,10 +74,13 @@
         <article class="card">
             <h2 class="card__title"></h2>
 
-            <img class="card__image" src="" onerror="this.src='<%=require('./images/defaultPhoto.png')%>'">
-
+            <img class="card__image" src="">
+            <!-- onerror="this.src='<%=require('./images/defaultPhoto.png')%>'" -->
             <button type="button" class="button card__delete" aria-label="удалить"></button>
-            <button type="button" class="button card__like" aria-label="в избранное"></button>
+            <div class="card__like-area"> <button type="button" class="button card__like"
+                    aria-label="в избранное"></button>
+                <p class="card__like-counter"></p>
+            </div>
         </article>
     </template>
     <!-- block popup add card-->
@@ -102,9 +108,26 @@
     <div class="popup popup_photo">
         <figure class="popup__figure">
             <button type="button" class="button popup__close popup__close_photo" aria-label="Закрыть окно"></button>
-            <img class="popup__image " src="" onerror="this.src='<%=require('./images/defaultPhoto.png')%>'">
+            <img class="popup__image " src="">
+            <!-- onerror="this.src='<%=require('./images/defaultPhoto.png')%>'" -->
             <h2 class="popup__name "></h2>
         </figure>
+    </div>
+    <!-- block popup edit ava-->
+    <div class="popup popup_edit-ava">
+        <div class="popup__container">
+            <button type="button" class="button popup__close popup__close_edit-ava" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="form popup__form popup__form_edit-ava" name="profile-edit-ava" novalidate>
+                <label for="url-ava-input" class="popup__label">
+                    <input id="url-ava-input" type="url" class="popup__input" name="urlAva"
+                        placeholder="Ссылка на картинку" value="" required>
+                    <span class="url-ava-input-error popup__input-error"></span>
+                </label>
+                <button type="submit" class="button popup__submit popup__submit_edit-ava"
+                    aria-label="Сохранить">Сохранить</button>
+            </form>
+        </div>
     </div>
 </body>
 

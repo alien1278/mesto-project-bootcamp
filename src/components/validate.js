@@ -32,12 +32,14 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, addButton, config) => {
   if (hasInvalidInput(inputList, config)) {
-    addButton.classList.remove(config.inactiveButtonClass);
-    addButton.setAttribute("disabled", true);
+    // addButton.classList.remove(config.inactiveButtonClass);
+    // addButton.setAttribute("disabled", true);
+    disableButton(addButton, config);
     // console.log(config.inactiveButtonClass);
   } else {
-    addButton.classList.add(config.inactiveButtonClass);
-    addButton.removeAttribute("disabled");
+    // addButton.classList.add(config.inactiveButtonClass);
+    // addButton.removeAttribute("disabled");
+    enabledButton(addButton, config);
     // console.log(config.inactiveButtonClass);
   }
 };
@@ -48,13 +50,27 @@ const setEventListeners = (formElement, config) => {
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
   toggleButtonState(inputList, buttonElement, config);
+  formElement.addEventListener("reset", () => {
+    disableButton(buttonElement, config);
+  });
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement, config);
       toggleButtonState(inputList, buttonElement, config);
+      checkInputValidity(formElement, inputElement, config);
     });
   });
 };
+function disableButton(addButton, config) {
+  addButton.classList.remove(config.inactiveButtonClass);
+  addButton.setAttribute("disabled", true);
+  // addButton.disabled = true;
+}
+
+function enabledButton(addButton, config) {
+  addButton.classList.add(config.inactiveButtonClass);
+  // addButton.disbaled = false;
+  addButton.removeAttribute("disabled");
+}
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {

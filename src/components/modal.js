@@ -1,31 +1,31 @@
-const popupCloseOverlay = document.querySelectorAll(".popup");
+const popupCloseOverlays = document.querySelectorAll(".popup");
 //func open close modal window
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", popupCloseEsc);
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
-const popupCloseEsc = (evt) => {
-  if (
-    evt.key === "Escape" ||
-    evt.target.classList.contains("popup_opened") ||
-    evt.target.classList.contains("popup__close")
-  ) {
+const handleEscape = (evt) => {
+  if (evt.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
   }
 };
-popupCloseOverlay.forEach((item) => {
+popupCloseOverlays.forEach((item) => {
   item.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) {
-      const overlayClose = e.target.closest(".popup");
-      closePopup(overlayClose);
+      closePopup(item);
     }
   });
 });
 
-export { openPopup, closePopup };
+function updateButtonCaption(button, caption) {
+  button.textContent = caption;
+}
+
+export { openPopup, closePopup, updateButtonCaption };

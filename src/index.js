@@ -19,10 +19,15 @@ import {
   cardAddPopupClose,
   showPhotoPopupClose,
   showPhotoPopup,
+  createCard,
+  profileEditAvaPopupClose,
+  profileEditAvaPopupOpen,
+  profileEditAvaPopup,
+  profileAvaForm,
+  handleProfileAvaFormSubmit,
 } from "./components";
 
-showPhotoPopupClose.addEventListener("click", () => closePopup(showPhotoPopup));
-// // edit listeners
+//popup edit UserInfo listeners
 profileEditPopupOpen.addEventListener("click", () => {
   openPopup(profileEditPopup);
 
@@ -34,12 +39,24 @@ profileEditPopupClose.addEventListener("click", () =>
 );
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-// add card listeners
+//popup edit Avatar listeners
+profileEditAvaPopupOpen.addEventListener("click", () => {
+  openPopup(profileEditAvaPopup);
+});
+profileEditAvaPopupClose.addEventListener("click", () =>
+  closePopup(profileEditAvaPopup)
+);
+profileAvaForm.addEventListener("submit", handleProfileAvaFormSubmit);
+
+//popup add Card listeners
 cardAddPopupOpen.addEventListener("click", () => {
   openPopup(addCardPopup);
 });
 cardAddPopupClose.addEventListener("click", () => closePopup(addCardPopup));
 addCardForm.addEventListener("submit", addCard);
+
+//popup show photo listeners
+showPhotoPopupClose.addEventListener("click", () => closePopup(showPhotoPopup));
 
 enableValidation({
   formSelector: ".form",

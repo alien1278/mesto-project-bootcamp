@@ -1,0 +1,8 @@
+.card__like-area {
+  grid-area: like;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px 0 0;
+  align-self: baseline;
+  justify-self: end;
+}

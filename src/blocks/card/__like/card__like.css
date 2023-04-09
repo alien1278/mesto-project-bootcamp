@@ -1,9 +1,9 @@
 .card__like {
-  grid-area: like;
+  /* grid-area: like; */
   width: 22px;
   height: 19px;
   justify-self: end;
-  margin: 0 20px 30px 0;
+  margin: 0 0 3px 0;
   align-self: center;
   border: none;
   background-image: url(../../../images/icon/buttonLike.svg);
