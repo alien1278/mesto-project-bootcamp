@@ -1,11 +1,8 @@
 import { showPhotoPopup } from "../components/showPhoto.js";
 import { getCards, addNewCard, like, dislike, deleteCard } from "./api";
-import {
-  openPopup,
-  updateButtonCaption,
-  closePopup,
-} from "../components/modal.js";
-import { userInfo } from "./profileInfo";
+import { openPopup, closePopup } from "./modal";
+import { updateButtonCaption } from "./utils";
+import { userInfo } from "../index";
 
 const addCardPopup = document.querySelector(".popup_add");
 const addCardForm = addCardPopup.querySelector(".popup__form_add");
@@ -26,18 +23,18 @@ function addCard(e) {
     .then((res) => {
       prependCard(res);
       // res.name, res.link
+      closePopup(addCardPopup);
+      e.target.reset();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       updateButtonCaption(buttonSubmitCard, "Создать");
-      closePopup(addCardPopup);
     });
 
   // nameCard.value = "";
   // urlCard.value = "";
-  e.target.reset();
 }
 
 //func create card
@@ -94,11 +91,15 @@ function deleteCardIcon(e, cardEl, id) {
     });
 }
 
-getCards().then((result) => {
-  result.forEach((card) => {
-    prependCard(card);
-  });
-});
+// getCards()
+//   .then((result) => {
+//     result.forEach((card) => {
+//       prependCard(card);
+//     });
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 function toggleLike(id, cardEl) {
   const likeButton = cardEl.querySelector(".card__like");
@@ -132,4 +133,5 @@ export {
   cardAddPopupOpen,
   cardAddPopupClose,
   createCard,
+  prependCard,
 };

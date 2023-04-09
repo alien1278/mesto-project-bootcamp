@@ -1,4 +1,4 @@
-const popupCloseOverlays = document.querySelectorAll(".popup");
+// const popupCloseOverlays = document.querySelectorAll(".popup");
 //func open close modal window
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -16,16 +16,16 @@ const handleEscape = (evt) => {
     closePopup(popup);
   }
 };
-popupCloseOverlays.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) {
-      closePopup(item);
-    }
-  });
-});
+// popupCloseOverlays.forEach((item) => {
+//   item.addEventListener("click", (e) => {
+//     if (e.target === e.currentTarget) {
+//       closePopup(item);
+//     }
+//   });
+// });
 
-function updateButtonCaption(button, caption) {
-  button.textContent = caption;
-}
+// function updateButtonCaption(button, caption) {
+//   button.textContent = caption;
+// }
 
-export { openPopup, closePopup, updateButtonCaption };
+export { openPopup, closePopup };

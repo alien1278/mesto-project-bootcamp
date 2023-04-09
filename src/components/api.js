@@ -12,30 +12,31 @@ function checkResponse(res) {
   }
   return Promise.reject(`error: ${res.status}`);
 }
+
+function request(url, options) {
+  // принимает два аргумента: урл и объект опций, как и `fetch`
+  return fetch(url, options).then(checkResponse);
+}
+
 const addNewCard = (name, link) => {
-  return fetch(`${config.baseUrl}/cards`, {
+  return request(`${config.baseUrl}/cards`, {
     method: "POST",
     headers: config.headers,
     body: JSON.stringify({
       name: name,
       link: link,
     }),
-  }).then(checkResponse);
+  });
 };
 
 const getCards = () => {
-  return fetch(`${config.baseUrl}/cards`, { headers: config.headers }).then(
-    checkResponse
-  );
+  return request(`${config.baseUrl}/cards`, { headers: config.headers });
 };
 const getUserInfo = () => {
-  return fetch(`${config.baseUrl}/users/me`, { headers: config.headers }).then(
-    checkResponse
-  );
+  return request(`${config.baseUrl}/users/me`, { headers: config.headers });
 };
 const editUserInfo = (name, about, avatar) => {
-  console.log(name, about, avatar);
-  return fetch(`${config.baseUrl}/users/me`, {
+  return request(`${config.baseUrl}/users/me`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
@@ -43,35 +44,35 @@ const editUserInfo = (name, about, avatar) => {
       about: about,
       avatar: avatar,
     }),
-  }).then(checkResponse);
+  });
 };
 const editUserAvatar = (avatar) => {
-  return fetch(`${config.baseUrl}/users/me/avatar`, {
+  return request(`${config.baseUrl}/users/me/avatar`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
       avatar: avatar,
     }),
-  }).then(checkResponse);
+  });
 };
 
 const like = (id) => {
-  return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+  return request(`${config.baseUrl}/cards/likes/${id}`, {
     method: "PUT",
     headers: config.headers,
-  }).then(checkResponse);
+  });
 };
 const dislike = (id) => {
-  return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+  return request(`${config.baseUrl}/cards/likes/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(checkResponse);
+  });
 };
 const deleteCard = (id) => {
-  return fetch(`${config.baseUrl}/cards/${id}`, {
+  return request(`${config.baseUrl}/cards/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(checkResponse);
+  });
 };
 export {
   getCards,

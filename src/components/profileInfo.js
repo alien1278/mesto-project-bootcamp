@@ -1,6 +1,7 @@
-import { closePopup, updateButtonCaption } from "../components/modal.js";
+import { closePopup } from "../components/modal.js";
 import { getUserInfo, editUserInfo, editUserAvatar } from "../components/api";
-
+import { updateButtonCaption } from "./utils";
+import { userInfo } from "../index";
 const profileEditPopup = document.querySelector(".popup_edit");
 const profileEditPopupOpen = document.querySelector(".profile__edit");
 const profileEditPopupClose =
@@ -33,13 +34,13 @@ function handleProfileFormSubmit(e) {
     .then((userData) => {
       profileName.textContent = userData.name;
       profileDescription.textContent = userData.about;
+      closePopup(profileEditPopup);
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       updateButtonCaption(buttonSubmitProfie, "Сохранить");
-      closePopup(profileEditPopup);
     });
 }
 function handleProfileAvaFormSubmit(e) {
@@ -48,28 +49,30 @@ function handleProfileAvaFormSubmit(e) {
   editUserAvatar(userAvatar.value)
     .then((userData) => {
       profileAva.src = userData.avatar;
+      closePopup(profileEditAvaPopup);
+      e.target.reset();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       updateButtonCaption(buttonSubmitAva, "Сохранить");
-      closePopup(profileEditAvaPopup);
     });
 }
-export let userInfo;
+// export let userInfo;
 
-getUserInfo().then((result) => {
-  userInfo = result;
-  profileName.textContent = result.name;
-  profileDescription.textContent = result.about;
-  profileAva.src = result.avatar;
-});
+// getUserInfo().then((result) => {
+//   userInfo = result;
+//   profileName.textContent = result.name;
+//   profileDescription.textContent = result.about;
+//   profileAva.src = result.avatar;
+// });
 
 export {
   handleProfileFormSubmit,
   handleProfileAvaFormSubmit,
   profileEditPopup,
+  profileAva,
   userDescription,
   userName,
   profileName,
