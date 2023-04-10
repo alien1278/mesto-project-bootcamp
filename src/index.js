@@ -78,15 +78,19 @@ addCardForm.addEventListener("submit", addCard);
 
 export let userInfo;
 ////
-Promise.all([getUserInfo(), getCards()]).then(([userData, cards]) => {
-  userInfo = userData;
-  profileName.textContent = userData.name;
-  profileDescription.textContent = userData.about;
-  profileAva.src = userData.avatar;
-  cards.forEach((card) => {
-    prependCard(card);
+Promise.all([getUserInfo(), getCards()])
+  .then(([userData, cards]) => {
+    userInfo = userData;
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    profileAva.src = userData.avatar;
+    cards.forEach((card) => {
+      prependCard(card);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});
 
 enableValidation({
   formSelector: ".form",
